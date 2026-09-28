@@ -4,61 +4,473 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Web Design</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>TechEdu - N?n T?ng H?c L?p Tr?nh</title>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #080914;
+            color: #94a3b8;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 8%;
+            position: sticky;
+            top: 0;
+            background: rgba(8, 9, 20, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: #2563eb;
+            color: #ffffff;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .logo-text {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-list a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            color: #ffffff;
+        }
+
+        .rightNav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 4px 6px 4px 16px;
+        }
+
+        .search-icon {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        #search {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 14px;
+            width: 130px;
+        }
+
+        #search::placeholder {
+            color: #475569;
+        }
+
+        .btn-search {
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-search:hover {
+            background: #1d4ed8;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.6);
+        }
+
+        /* --- SECTIONS MAIN LAYOUT --- */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .section-reverse {
+            flex-direction: row-reverse;
+        }
+
+        .content-box {
+            flex: 1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .badge-blue {
+            background: rgba(37, 99, 235, 0.12);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .badge-purple {
+            background: rgba(168, 85, 247, 0.12);
+            color: #c084fc;
+            border: 1px solid rgba(192, 132, 252, 0.2);
+        }
+
+        .badge-orange {
+            background: rgba(249, 115, 22, 0.12);
+            color: #fb923c;
+            border: 1px solid rgba(251, 146, 60, 0.2);
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 20px;
+        }
+
+        .highlight-blue {
+            color: #38bdf8;
+        }
+
+        .highlight-purple {
+            color: #c084fc;
+        }
+
+        .highlight-orange {
+            color: #fb923c;
+        }
+
+        .section-desc {
+            font-size: 15px;
+            color: #94a3b8;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bullet-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            color: #c084fc;
+            font-size: 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: #ffffff;
+            padding: 12px 26px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            padding: 12px 26px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- IMAGE CONTAINER & HOVER ANIMATION --- */
+        .image-box {
+            flex: 1.1;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
+        }
+
+        .image-box:hover img {
+            transform: scale(1.08) rotate(1deg);
+            filter: brightness(1.15) contrast(1.05);
+        }
+
+        .image-box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.15),
+                transparent
+            );
+            transition: left 0.8s ease;
+        }
+
+        .image-box:hover::after {
+            left: 150%;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px 0;
+            text-align: center;
+            background: #05060d;
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .text-footer {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .section-container, .section-reverse {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .image-box img {
+                height: 260px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header v?i n?n ?nh và hi?u ?ng blur -->
-    <header class="header">
-        <div class="header-content">
-            <h1>Creative Web Design</h1>
-            <p>Thi?t k? website chuyên nghi?p - Hi?n ð?i - ?n tý?ng</p>
-            <a href="#services" class="btn">Khám phá ngay</a>
-        </div>
-    </header>
-
-    <!-- Thanh ði?u hý?ng -->
+    <!-- NAVBAR -->
     <nav class="navbar">
-        <ul>
-            <li><a href="#">Trang ch?</a></li>
-            <li><a href="#services">D?ch v?</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Liên h?</a></li>
+        <a href="#" class="logo">
+            <span class="logo-icon">&lt;/&gt;</span>
+            <span class="logo-text">TechEdu.</span>
+        </a>
+
+        <ul class="nav-list">
+            <li><a href="#web">Web Technology</a></li>
+            <li><a href="#program">C Programming</a></li>
+            <li><a href="#java">Java Mastery</a></li>
         </ul>
+
+        <div class="rightNav">
+            <span class="search-icon">??</span>
+            <input type="text" name="search" id="search" placeholder="T?m khóa h?c...">
+            <button class="btn-search">T?m ki?m</button>
+        </div>
     </nav>
 
-    <!-- Content Section v?i Card Layout -->
-    <section class="content" id="services">
-        <h2>D?ch v? c?a chúng tôi</h2>
-        <div class="card-container">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" alt="D?ch v? 1">
-                <h3>Thi?t k? Website</h3>
-                <p>• Chúng tôi t?o ra nh?ng trang web chuyên nghi?p, thân thi?n v?i ngý?i dùng.</p>
+    <!-- SECTION 1: WEB TECHNOLOGY -->
+    <section class="section-container" id="web">
+        <div class="content-box">
+            <div class="badge badge-blue">? N?n t?ng phát tri?n Web</div>
+            <h1 class="section-title">Ki?n T?o Týõng Lai Cùng <br><span class="highlight-blue">Web Technology</span></h1>
+            <p class="section-desc">
+                HTML (HyperText Markup Language) là ngôn ng? ðánh d?u siêu vãn b?n c?t l?i dùng ð? xây d?ng c?u trúc trang web. K?t h?p cùng CSS và JavaScript, b?n có th? thi?t k? các giao di?n hi?n ð?i, t?i ýu giao di?n mý?t mà trên m?i thi?t b?.
+            </p>
+            <div class="btn-group">
+                <a href="#" class="btn-primary">B?t Ð?u H?c Ngay</a>
+                <a href="#" class="btn-secondary">T?m Hi?u Chi Ti?t</a>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=500" alt="D?ch v? 2">
-                <h3>SEO & Marketing</h3>
-                <p>• Giúp website c?a b?n ð?t th? h?ng cao trên công c? t?m ki?m.</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=500" alt="D?ch v? 3">
-                <h3>H? tr? 24/7</h3>
-                <p>• Ð?i ng? h? tr? luôn s?n sàng giúp b?n gi?i quy?t m?i v?n ð?.</p>
-            </div>
+        </div>
+        <div class="image-box">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1000&q=80" alt="Web Technology Code">
         </div>
     </section>
 
-    <!-- Footer v?i 2 c?t (B?n quy?n + M?ng x? h?i) -->
-    <footer class="footer">
-        <div class="footer-left">
-            <p>• &copy; 2026 Creative Web. All rights reserved.</p>
+    <!-- SECTION 2: C PROGRAMMING -->
+    <section class="section-container section-reverse" id="program">
+        <div class="content-box">
+            <div class="badge badge-purple">? L?p tr?nh h? th?ng</div>
+            <h1 class="section-title">N?n T?ng V?ng Ch?c V?i <br><span class="highlight-purple">C Programming</span></h1>
+            <p class="section-desc">
+                C là ngôn ng? l?p tr?nh th? t?c phát tri?n b?i Dennis Ritchie. V?i kh? nãng truy c?p b? nh? c?p th?p, cú pháp g?n gàng, C là l?a ch?n hàng ð?u ð? l?p tr?nh h? ði?u hành, tr?nh biên d?ch và ph?n c?ng nhúng.
+            </p>
+            <ul class="bullet-list">
+                <li>Qu?n l? b? nh? t?i ýu (Pointers & Dynamic Memory)</li>
+                <li>Hi?u nãng c?c cao cho các ?ng d?ng h? th?ng</li>
+            </ul>
         </div>
-        <div class="footer-right">
-            <p>• Theo d?i chúng tôi:</p>
-            <p>• Facebook | Twitter | LinkedIn</p>
+        <div class="image-box">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1000&q=80" alt="C Programming Code">
         </div>
+    </section>
+
+    <!-- SECTION 3: JAVA MASTERY -->
+    <section class="section-container" id="java">
+        <div class="content-box">
+            <div class="badge badge-orange">? Hý?ng ð?i tý?ng chuyên nghi?p</div>
+            <h1 class="section-title">L?p Tr?nh Ða N?n T?ng V?i <br><span class="highlight-orange">Java Mastery</span></h1>
+            <p class="section-desc">
+                Java là m?t trong nh?ng ngôn ng? l?p tr?nh ph? bi?n nh?t nh? nguyên l? "Write Once, Run Anywhere". M? ngu?n Java biên d?ch thành Bytecode và ch?y tr?c ti?p trên Java Virtual Machine (JVM).
+            </p>
+            <div class="feature-card">
+                ?? <b>Ýu ði?m:</b> B?o m?t t?t, h? tr? x? l? ða lu?ng (Multi-threading) và h? sinh thái phong phú cho doanh nghi?p.
+            </div>
+        </div>
+        <div class="image-box">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1000&q=80" alt="Java Laptop Workspace">
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <a href="#" class="footer-logo">
+            <span class="logo-icon">&lt;/&gt;</span>
+            <span class="logo-text" style="font-size: 16px;">TechEdu</span>
+        </a>
+        <p class="text-footer">Copyright &copy; 2026 - All rights are reserved</p>
     </footer>
+
+    <!-- INTERACTION SCRIPT -->
+    <script>
+        document.querySelector('.btn-search').addEventListener('click', function() {
+            const query = document.getElementById('search').value.toLowerCase().trim();
+            if (!query) return;
+
+            const titles = document.querySelectorAll('.section-title');
+            let found = false;
+
+            titles.forEach(title => {
+                if (title.textContent.toLowerCase().includes(query)) {
+                    title.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert('Không t?m th?y khóa h?c phù h?p v?i t? khóa!');
+            }
+        });
+    </script>
 </body>
 </html>
